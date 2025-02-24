@@ -1,4 +1,6 @@
+{% extends 'chipin/base.html' %}
 {% load static %}
+{% block title %}Login - ChipIn{% endblock %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +15,10 @@
         {% endfor %}
         </ul>
     {% endif %}
+
+
+
+{% block content %}
     <div class="login-container">
         <form action="{% url 'users:login' %}" method="post">
             {% csrf_token %}
@@ -21,5 +27,6 @@
             <input type="submit" value="Login">
         </form>
     </div>
+{% endblock %}
 </body>
 </html>

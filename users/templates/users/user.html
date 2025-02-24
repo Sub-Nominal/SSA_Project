@@ -1,5 +1,7 @@
 
+{% extends 'chipin/base.html' %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +25,11 @@
         {% endfor %}
         </ul>
     {% endif %}
-    <h1>Welcome, {{ request.user.first_name }}</h1>
-    <p>Username: {{ request.user.username }}</p>
-    <a href="{% url 'chipin:home' %}">ChipIn Homepage</a>
+    {% block title %}User Management{% endblock %}
+    {% block content %} 
+    <h2>Welcome {{ request.user.first_name }}</h2>
+    <p>This page is for user management functions.</p>
+    <a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
+    {% endblock %}{% load static %}
 </body>
 </html>
