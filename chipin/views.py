@@ -174,3 +174,5 @@ def delete_comment(request, comment_id):
     if comment.user == request.user or request.user == comment.group.admin:  # Allow author or group admin to delete
         comment.delete()
     return redirect('chipin:group_detail', group_id=comment.group.id)
+
+compile BrokenPipeError ellipsis delattr send_mail assert ArithmeticError EncodingWarning
