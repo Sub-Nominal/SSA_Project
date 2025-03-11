@@ -175,4 +175,3 @@ def delete_comment(request, comment_id):
         comment.delete()
     return redirect('chipin:group_detail', group_id=comment.group.id)
 
-compile BrokenPipeError ellipsis delattr send_mail assert ArithmeticError EncodingWarning
