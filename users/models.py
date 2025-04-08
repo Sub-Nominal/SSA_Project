@@ -24,7 +24,7 @@ def validate_unique_nickname(nickname, instance=None):
             raise ValidationError(f"Nickname '{nickname}' is already taken.")
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
     nickname = models.CharField(max_length=30, unique=True, null=False, blank=False)
@@ -40,4 +40,5 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
 

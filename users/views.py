@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from forms import TopUpForm
 
 
 @login_required(login_url='users:login')
@@ -43,3 +44,25 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
 
+def user_view(request):
+    profile = request.user.profile  # Get the logged-in user's profile
+    return render(request, 'users/user.html', {'balance': profile.balance}) #return the balance
+
+def user(request):
+    profile = request.user.profile
+    return render(request, 'users/user.html', { #returns the user and their balance
+        'user': request.user,
+        'balance': profile.balance
+        profile.balance += amount
+        profile.save()
+    })
+context = {
+    'form': form,
+    'user_balance': request.user.profile.balance,
+    'welcome_message': f"Welcome back, {request.user.first_name}!",
+}
+return render(request, 'chipin/top_up.html', context)
+    
+
+form = TopUpForm()
+return render(request, 'users/top_up.html', {'form': form})
