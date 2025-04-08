@@ -168,7 +168,7 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     if comment.user == request.user or request.user == comment.group.admin:  # Allow author or group admin to delete
         comment.delete()
-    return redirect('chipin:group_detail', group_id=comment.group.id
+    return redirect('chipin:group_detail', group_id=comment.group.id)
                     
 @login_required
 def group_detail(request, group_id, edit_comment_id=None):

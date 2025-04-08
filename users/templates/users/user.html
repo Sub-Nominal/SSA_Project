@@ -29,6 +29,13 @@
     {% block content %} 
     <h2>Welcome {{ request.user.first_name }}</h2>
     <p>This page is for user management functions.</p>
+    <h1>Welcome, {{ user.first_name }}</h1>
+    <p>Your current balance is ${{ balance }}</p>
+    
+    <a href="{% url 'top_up' %}">Top Up Balance</a>
+    <form method="post">
+        {% csrf_token %}
+    <input type="number" step="0.01" min="0.01">
     <a href="{% url 'chipin:home' %}">Click through to ChipIn Functions</a>
     {% endblock %}{% load static %}
 </body>
